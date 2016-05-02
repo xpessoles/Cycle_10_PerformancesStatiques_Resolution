@@ -1,0 +1,136 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={STAT : Mise en oeuvre des démarches de résolution pour déterminer les performances des systèmes en statique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+    
+\input{style/new_style}
+\input{style/macros_SII}
+
+\usepackage{multicol}
+\fichetrue
+%\fichefalse
+
+\proftrue
+%\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Cycle 10}
+\def\xxpartie{Mise en \oe{}uvre des démarches de résolution pour déterminer les performances des systèmes en statique}
+
+\def\xxnumchapitre{Chapitre 1}
+\def\xxchapitre{Principe Fondamental de la Statique}
+
+\def\xxtitreexo{Machine de traction}
+\def\xxsourceexo{\hspace{.2cm} D'après ressources de F. Mathurin.}
+
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Cycle 10 -- Ch. 1}
+
+\def\xxactivite{Colle 3}
+\def\xxauteur{\textsl{F. Mathurin}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+%\noindent \textbf{Analyser :} 
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item -- %\textit{A3 -- C6 :} transmetteurs de puissance.
+%\end{itemize}
+%\noindent \textbf{Modéliser :} \textit{proposer un modèle de connaissance du système.}
+}}
+
+\def\xxfigures{
+\includegraphics[width=.7\textwidth]{images/machine}
+}%figues de la page de garde
+
+\def\xxpied{%
+Cycle 10 -- Vérification des performances statiques \\
+Ch. 1 : Principe Fondamental de la Statique -- \xxactivite%
+}
+
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{7cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\begin{multicols}{2}
+
+On s’intéresse à une machine de traction qui a pour objectif de déformer en traction une éprouvette afin de connaître le comportement du matériau qui la constitue. L'éprouvette est serrée entre deux mandrins et le déplacement d’un des deux mandrins lors de la phase d’essais permet de tirer sur l’éprouvette afin de la déformer. L'objectif est de vérifier si la machine de traction permet d'atteindre le niveau du critère de force de traction du cahier des charges. 
+
+Le rotor du moteur 6 entraine en mouvement de rotation les deux vis 1 et 3 par l’intermédiaire des deux courroies 4 et 5. La rotation continue des vis 1 et 3 est ensuite transformée en un mouvement de translation verticale du mandrin supérieur 2.   
+
+Données et hypothèses : Toutes les liaisons sont supposées parfaites. La pesanteur est négligée.  
+L'éprouvette exerce sur la pièce 2 une action mécanique modélisée par le glisseur : $\torseurstat{T}{\text{éprouvette}}{2} = \torseurl{-F\vect{y}}{\vect{0}}{O}$
+
+La courroie 4 exerce sur 1, grâce à l'action du moteur, une action mécanique modélisée par le torseur : $\torseurstat{T}{4}{1} = \torseurl{\vect{0}}{M_{41}\vect{y}}{O}$.
+
+Par symétrie, on ne s'intéresse sur ce problème qu'à la moitié de gauche de la machine de traction, c'est-à-dire aux pièces 0, 1 et 2. 
+
+
+\setcounter{subparagraph}{0}
+
+\subparagraph{}
+\textit{Établir le graphe des liaisons de ce mécanisme (uniquement les pièces 0, 1 et 2). Ajouter sur le graphe des liaisons les actions mécaniques extérieures au système.}
+
+\subparagraph{}
+\textit{Pour les liaisons entre 1/0 et 2/0, proposer un torseur modélisant les actions mécaniques qui peuvent y être transmises.}
+
+
+\subparagraph{}
+\textit{ Proposer un torseur modélisant l’action mécanique transmise dans la liaison hélicoïdale $\torseurstat{T}{1}{2}$ sachant que la vis possède un pas à droite. }
+
+\subparagraph{}
+\textit{Écrire les équations de la statique obtenues en appliquant le PFS sur le solide 2 au point B.}
+
+\subparagraph{}
+\textit{Écrire les équations de la statique obtenues en appliquant le PFS sur le solide 1 au point B. }
+
+
+\subparagraph{}
+\textit{Déterminer une relation entre $F$ et $M_{41}$.}
+
+Les courroies 4 et 5 sont en mouvement autour de trois poulies (liées à 1, à 3 et à 6), toutes de même rayon. 
+
+\subparagraph{}
+\textit{Déterminer la couple que doit délivrer le moteur pour exercer la force F sur le mandrin supérieur. }
+
+
+\subparagraph{}
+\textit{Le pas des liaisons hélicoïdales est $p = 3 \text{mm}$. Le moteur peut délivrer $20 \text{N.m}$. Conclure sur la capacité de la machine de traction à satisfaire le critère du cahier des charges. }
+
+
+
+\end{multicols}
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/traction}
+\end{center}
+
+
+\end{document}
+
+

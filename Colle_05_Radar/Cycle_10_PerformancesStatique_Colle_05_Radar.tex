@@ -1,0 +1,402 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={STAT : Mise en oeuvre des démarches de résolution pour déterminer les performances des systèmes en statique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+    
+\input{style/new_style}
+\input{style/macros_SII}
+
+\usepackage{multicol}
+\fichetrue
+%\fichefalse
+
+%\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Cycle 10}
+\def\xxpartie{Mise en \oe{}uvre des démarches de résolution pour déterminer les performances des systèmes en statique}
+
+\def\xxnumchapitre{Chapitre 1}
+\def\xxchapitre{Principe Fondamental de la Statique}
+
+\def\xxtitreexo{Système de positionnement de radar}
+\def\xxsourceexo{\hspace{.2cm} D'après ressources de F. Mathurin.}
+
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Cycle 10 -- Ch. 1}
+
+\def\xxactivite{Colle 5}
+\def\xxauteur{\textsl{F. Mathurin}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+%\noindent \textbf{Analyser :} 
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item -- %\textit{A3 -- C6 :} transmetteurs de puissance.
+%\end{itemize}
+%\noindent \textbf{Modéliser :} \textit{proposer un modèle de connaissance du système.}
+}}
+
+\def\xxfigures{
+\includegraphics[width=.7\textwidth]{images/img1}
+}%figues de la page de garde
+
+\def\xxpied{%
+Cycle 10 -- Vérification des performances statiques \\
+Ch. 1 : Principe Fondamental de la Statique -- \xxactivite%
+}
+
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{7cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\begin{multicols}{2}
+
+
+\ifprof
+\else
+Afin d'assurer la sécurité des personnes chargées de déminer les terrains militaires, les ingénieurs ont imaginé d'intégrer un détecteur de métaux à un véhicule blindé. Grâce à ce système, les démineurs peuvent rester à l'abri dans le véhicule ou cas où la mine venait à exploser.
+
+
+
+On donne ci-dessous le schéma d'architecture de la solution retenue ainsi qu'un extrait du cahier des charges fonctionnel.
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/img2}
+\end{center}
+
+Le balayage par l'antenne de la zone à nettoyer est réalisé grâce à la rotation d'axe $(AB)$ de la pièce 2 actionnée par un vérin hydraulique 3--4. L'antenne du détecteur de métaux est fixée sur un support permettant une double rotation suivant deux axes perpendiculaires de façon à ce qu'elle puisse toujours rester parallèle au sol. Ces deux rotations sont générées par deux moteurs électriques. Le support $S$ est fixé sur le châssis du véhicule par un vérin.
+
+L'objectif de cette étude est de vérifier que le positionneur de radar permet de satisfaire ou non les critères de balayage angulaire à effectuer et de masse de radar à déplacer FS1. 
+
+Hypothèses de modélisation : 
+\begin{itemize}
+\item la pesanteur n'agit que sur l'antenne de son centre $G$; 
+\item la base $(\vect{x_0}, \vect{y_0}, \vect{z_0})$ est liée au sol. Le sol est en pente selon un angle $\alpha=15^o$ par rapport à la verticale ascendante de la base $(\vect{x_g}= \vect{x_0}, \vect{y_g},\vect{z_g})$;
+\item la base $(\vect{x_1}, \vect{y_1}, \vect{z_1}=\vect{z_0})$ est liée au véhicule 1 qui se déplace sur le sol selon un angle $\beta$ ($0\leq \beta \leq 2\pi$);
+\item la base $(\vect{x_2}, \vect{y_2}, \vect{z_2}=\vect{z_1})$  est liée au bras 2 du positionneur de radar. La position du bras 2 par rapport à la voiture est paramétrée par l'angle $\theta$;
+\item la section du vérin 3--4 est notée $S$; 
+\item la pression dans le vérin est notée $p$ et est supposée constante;
+\item toutes les liaisons sont supposées parfaites.
+\end{itemize}
+
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/img3}
+\end{center}
+
+\fi
+%\subsection*{Etude du critère de masse à déplacer}
+
+\subsection*{Étude du critère de masse à déplacer}
+\ifprof
+\else
+
+On retient le modèle 3D suivant. Le solide 2 comprend l'antenne et son support orientable. 
+
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/img4}
+\end{center}
+\fi
+
+\subparagraph{}
+\textit{Établir le graphe de structure du système. Indiquer sur ce graphe le nombre d'inconnues des torseurs d'actions mécaniques transmissibles par chacune des liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{center}
+\includegraphics[width=.6\linewidth]{images/img1_cor}
+\end{center}
+\end{corrige}}{}
+
+
+\ifthenelse{\boolean{prof}}{}{
+L'action mécanique transmissible par la liaison rotule $A$ est modélisée par le torseur suivant :
+$$
+\left\{
+F_{\text{rotule 1}\rightarrow 2} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{12} & 0 \\
+Y_{12} & 0 \\
+Z_{12} & 0 \\
+\end{array}
+\right\}_{A,B_1}
+$$
+
+L'action mécanique transmissible par la liaison linéaire annulaire en $B$ d'axe $(B,\vect{z_1})$ est modélisée par le torseur suivant :
+$$
+\left\{
+F_{\text{lin annulaire }1\rightarrow 2} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X'_{12} & 0 \\
+Y'_{12} & 0 \\
+0 & 0 \\
+\end{array}
+\right\}_{B,B_1}
+$$
+
+L'action mécanique de la pesanteur sur le solide 2 est modélisée par le torseur suivant :
+$$
+\left\{
+F_{\text{pesanteur }\rightarrow 2} 
+\right\}=
+\left\{
+\begin{array}{cc}
+- P \vect{z_g} \\
+\vect{0} \\
+\end{array}
+\right\}_{G}
+$$
+}
+\subparagraph{}
+\textit{Donner la forme des torseurs d'actions transmissibles des liaisons 1--3, 3--4 et 2--4 dans la base 3 conformément à la notation imposée ci-dessous.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+La liaison entre 1 et 3 est une liaison rotule de centre $C$: 
+
+$$
+\left\{
+F_{1 \rightarrow 3} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{13} & 0 \\
+Y_{13} & 0 \\
+Z_{13} & 0 \\
+\end{array}
+\right\}_{C,B_3}
+$$
+
+La liaison entre 3 et 4 est une liaison pivot glissant de de centre $F$ et d'axe $\vect{x_3}$: 
+
+$$
+\left\{
+F_{4 \rightarrow 3} 
+\right\}=
+\left\{
+\begin{array}{cc}
+0 & 0 \\
+Y_{43} & M_{43} \\
+Z_{43} & N_{43} \\
+\end{array}
+\right\}_{F,B_3}
+$$
+
+La liaison entre 2 et 4 est une liaison rotule de de centre $D$ : 
+
+$$
+\left\{
+F_{2 \rightarrow 4} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{24} & 0 \\
+Y_{24} & 0 \\
+Z_{24} & 0 \\
+\end{array}
+\right\}_{D,B_3}
+$$
+\end{corrige}}{}
+
+Action mécanique exercée par le solide $i$ sir le solide $j$ au point $P$ dans la base 3 :
+$$
+\left\{
+F_{j \rightarrow i} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{ij} & L_{ij} \\
+Y_{ij} & M_{ij} \\
+Z_{ij} & N_{ij} \\
+\end{array}
+\right\}_{P,B_3}
+$$
+
+avec $\vect{R_{i\rightarrow j}} = X_{ij}\vect{x_3}+Y_{ij}\vect{y_3}+Z_{ij}\vect{z_3}$ et 
+$\vect{M_{P, i\rightarrow j}} = L_{ij}\vect{x_3}+M_{ij}\vect{y_3}+N_{ij}\vect{z_3} $.
+
+\subparagraph{}
+\textit{Déterminer les directions de $\vect{R_{1\rightarrow 3}}$ et de $\vect{R_{2\rightarrow 4}}$ puis en déduire des simplifications dans les torseurs précédents.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole les solides $3$ et $4$. Cet ensemble est soumis à 2 forces. D'après le PFS, ces deux forces ont même norme, même direction et sens opposé. En conséquence, $X_{13}+X_{24}=0$ et $Y_{13}=Z_{13}=Y_{24}=Z_{24}=0$.
+
+$$
+\left\{
+F_{1 \rightarrow 3} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{13} & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}
+\right\}_{C,B_3}
+\quad 
+\left\{
+F_{2 \rightarrow 4} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{24} & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}
+\right\}_{D,B_3}
+$$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer l'expression de $||\vect{R_{2\rightarrow 4}}||$ en fonction de $p$ et $S$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a $||\vect{R_{2\rightarrow 4}}||=pS$ 
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{En isolant le solide $2$ et en utilisant le théorème du moment statique au point $A$ projetée sur $\vect{z_2}$, déterminer l'expression de $X_{42}$ en fonction de $P$ et des paramètres géométriques utiles.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole le solide 2. 
+
+On fait le bilan des actions mécaniques extérieures au point $A$ :
+Liaison rotule en $A$ : 
+$$
+\left\{
+F_{1 \rightarrow 2} 
+\right\}=
+\left\{
+\begin{array}{cc}
+X_{12} & 0 \\
+Y_{12} & 0 \\
+Z_{12} & 0 \\
+\end{array}
+\right\}_{A,B_2}
+$$
+
+
+
+Liaison linéaire annulaire au point $B$ :
+$$
+\left\{
+F_{1 \rightarrow 2} 
+\right\}=
+\left\{
+\begin{array}{cc}
+0 & 0 \\
+Y'_{12} & 0 \\
+Z'_{12} & 0 \\
+\end{array}
+\right\}_{B,B_2}
+=
+\left\{
+\begin{array}{cc}
+0 &  -\\
+Y'_{12} &  -\\
+Z'_{12} &  0\\
+\end{array}
+\right\}_{A,B_2}
+$$
+
+
+Liaison rotule au point $D$ :
+$$
+\left\{
+F_{4 \rightarrow 2} 
+\right\}
+=
+\left\{
+\begin{array}{cc}
+X_{42}  & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}
+\right\}_{D,B_2}
+=
+\left\{
+\begin{array}{cc}
+X_{42}  & -\\
+0 & -\\
+0 & 0 \\
+\end{array}
+\right\}_{A,B_2}
+$$
+
+
+Pesanteur en $G$ :
+$$
+\left\{
+F_{pes \rightarrow 2} 
+\right\}
+=
+\left\{
+\begin{array}{cc}
+-P  & 0 \\
+0 & 0 \\
+0 & 0 \\
+\end{array}
+\right\}_{G,B_2}
+=
+\left\{
+\begin{array}{cc}
+-P  & -\\
+0 & -  \\
+0 &  \\
+\end{array}
+\right\}_{A,B_2}
+$$
+\end{corrige}}{}
+
+On donne : $\vect{BA}=180\vect{z_0}$, $\vect{BA}=-230\vect{y_1}$, $\vect{AD}=710\vect{x_2}$, $\vect{AG}=1200\vect{x_2}-270\vect{z_2}$ où les dimensions sont en mm. $P=400N$, $S=28\cdot 10^{-3}m^2$.
+
+\subparagraph{}
+\textit{Calculer la valeur de la pression $p$ maximale pour la position $\theta=0^o$ (et donc $\gamma = 18^o$) et $\beta = 0^o$ avec les valeurs numériques données.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+
+\subparagraph{}
+\textit{Le vérin utilisé peut supporter une pression de 10 bars maximum. Conclure quant à la capacité du système à satisfaire le critère de masse de radar à déplacer.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\end{multicols}
+
+
+
+
+\end{document}
+
+

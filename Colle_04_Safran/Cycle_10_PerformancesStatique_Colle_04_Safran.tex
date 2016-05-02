@@ -1,0 +1,151 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={STAT : Mise en oeuvre des démarches de résolution pour déterminer les performances des systèmes en statique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+    
+\input{style/new_style}
+\input{style/macros_SII}
+
+\usepackage{multicol}
+\fichetrue
+%\fichefalse
+
+\proftrue
+%\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Cycle 10}
+\def\xxpartie{Mise en \oe{}uvre des démarches de résolution pour déterminer les performances des systèmes en statique}
+
+\def\xxnumchapitre{Chapitre 1}
+\def\xxchapitre{Principe Fondamental de la Statique}
+
+\def\xxtitreexo{Safran de voilier \footnotesize{\textit{Safran... du SAFRAN (Skipper Marc Guillemot)}}}
+\def\xxsourceexo{\hspace{.2cm} D'après ressources de F. Mathurin.}
+
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Cycle 10 -- Ch. 1}
+
+\def\xxactivite{Colle 4}
+\def\xxauteur{\textsl{F. Mathurin}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+%\noindent \textbf{Analyser :} 
+%\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item -- %\textit{A3 -- C6 :} transmetteurs de puissance.
+%\end{itemize}
+%\noindent \textbf{Modéliser :} \textit{proposer un modèle de connaissance du système.}
+}}
+
+\def\xxfigures{
+\includegraphics[width=.7\textwidth]{images/safran}
+}%figues de la page de garde
+
+\def\xxpied{%
+Cycle 10 -- Vérification des performances statiques \\
+Ch. 1 : Principe Fondamental de la Statique -- \xxactivite%
+}
+
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{png/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{7cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+\begin{multicols}{2}
+
+
+
+
+
+Le safran d'un voilier lui permet de se diriger. Dans le cas du pilote hydraulique du laboratoire, l'angle du safran est asservi afin de pouvoir maintenir un cap, en tenant compte des aléas extérieurs (courants marins, vents violents...). Le safran est actionné par un vérin hydraulique, la pièce 2 étant relié à la tige du vérin et la pièce 3 constituant le corps du vérin. La pièce 1 représente le safran sur lequel agit la pression de l'eau $p$, perpendiculairement au plan du safran. 
+
+L'objectif de l'étude est de calculer les efforts dans les liaisons dans le but ultérieur de dimensionner le vérin hydraulique et les éléments mécaniques assurant les liaisons (éléments roulants ou coussinets). 
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/safran2}
+
+\textit{Schéma d'architecture}
+\end{center}
+
+
+
+
+On donne : 
+\begin{itemize}
+\item $\vect{A_1B}=h\vect{y}$
+\item $\vect{CB}=\lambda\vect{x}$
+\end{itemize}
+
+\subparagraph{}
+\textit{Tracer le graphe de structure associé au système.}
+
+NB : il serait possible d'écrire la loi Entrée -- Sortie liant la vitesse de déploiement du vérin à la vitesse de rotation du safran.
+
+\subparagraph{}
+\textit{Sur le graphe d'architecture du système indiquer par des flèches les actions mécaniques agissant sur chacune des pièces.}
+
+Par la suite, on négligera l'action de la pesanteur sur les pièces 2 et 3. 
+\begin{center}
+\includegraphics[width=.6\linewidth]{images/safran3}
+\end{center}
+
+\vspace{.5cm}
+
+\subparagraph{}
+\textit{Déterminer le torseur d'action mécanique de l'eau sur le gouvernail au point $A_2$. On considèrera que $\vect{OA_2}=\vect{0}$. On négligera l'épaisseur du safran.} 
+
+\subparagraph{}
+\textit{Après avoir isolé le solide 1, appliquer le principe fondamental de la statique au point $A_1$.}
+
+\subparagraph{}
+\textit{Quelles inconnues peuvent être déterminées ? Aurait-on pu le prévoir ?}
+
+\subparagraph{}
+\textit{Après avoir isolé l'ensemble $\{2+3\}$, appliquer le principe fondamental de la statique au point $B$.}
+
+
+\subparagraph{}
+\textit{Quelles inconnues ont pu être déterminées ?}
+
+
+\subparagraph{}
+\textit{Déterminer l'effort à délivrer par le vérin pour supporter la pression de l'eau sur le safran.}
+
+\subparagraph{}
+\textit{Déterminer alors la pression à délivrer par le vérin en fonction d'une section $S$.}
+
+
+
+\end{multicols}
+
+
+
+
+\end{document}
+
+

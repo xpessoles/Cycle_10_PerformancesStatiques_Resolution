@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\newboolean{td}
+\setboolean{td}{true}
+
+
+\usepackage[%
+    pdftitle={CI 06 : Stat - Ch 02 : PFS},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 6 : Étude du comportement statique des systèmes}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 2 -- Principe Fondamental de la Statique}{
+Partie  -- }}
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Xavier \textsc{Pessoles} \\ 2013 -- 2014}{
+}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 6 : Statique\\
+Chapitre 2 : PFS -- TD 4}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Travaux Dirigés}}
+\end{center}
+
+\begin{flushright}
+\textit{Ressources de Florestan Mathurin.}
+\end{flushright}
+
+
+
+\section*{Bouche de climatisation}
+
+\begin{minipage}[c]{.5\linewidth}
+On s’intéresse à une bouche de climatisation de bureau.   
+
+L’air climatisé arrive par le réseau d’air climatisé du bâtiment et est distribué par plusieurs bouches. Le débit d’air entrant sur chaque bouche est initialement réglé par l’intermédiaire d’un clapet dont l’ouverture est maitrisée  par un vérin. On donne ci-dessous la modélisation sous forme de schéma d’architecture ainsi qu’un extrait de cahier des charges fonctionnel. 
+
+\end{minipage} \hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/img1}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/img2}
+\end{center}
+
+
+Le clapet 1, de masse $m$ et de centre de gravité $G (0,a,–h)$, est en liaison avec le mur 0 par l’intermédiaire d’une liaison rotule de centre $A (0,2a,0)$ et d’une liaison linéaire annulaire en $O$ d’axe $(O, \vect{y})$. Cette solution permet ainsi une rotation du clapet autour de l’axe $(O, \vect{y})$.
+
+L’air climatisé arrive par la bouche et exerce une poussée $\vectf{air}{1} = F_{\text{air}\rightarrow 1}\vect{x}$ en $M (0,a,–l)$.  
+
+Le débit d’air entrant est initialement réglé par l’intermédiaire de la raideur du vérin dont la tige est en liaison rotule et centre $B (0,2a+c,d)$  avec le clapet et en liaison rotule de centre $D (-e,2a+c,0)$  avec le mur 0. La tige de vérin 2 exerce sur le solide 1 une poussée $\vectf{2}{1} = p.S \vect{x}$ 2 au point $B$.
+
+\subparagraph{}
+\textit{Donner la forme du torseur d’action mécanique transmissible de la liaison 0 sur 1 en $A$.}
+ 
+ \subparagraph{}
+ \textit{Donner la forme du torseur d’action mécanique transmissible de la liaison 0 sur 1 en $O$.}
+
+ \subparagraph{}
+ \textit{Isoler l’ensemble 2+3 puis en déduire les expressions des torseurs d’action mécanique transmissible de la liaison 1 sur 2 en $B$ et de la liaison 0 sur 3 en $D$ que l’on écrira en projection dans la base 2 et 0.}
+ 
+  \subparagraph{}
+ \textit{A l’aide d’une seule équation scalaire du PFS à identifier, déterminer la relation liant $p$ et 
+ $\vectf{air}{1}$.}
+ 
+\subparagraph{}
+\textit{On donne $S$ : section du piston du vérin. Déterminer la pression $p$ dans le vérin. Faire l’application numérique et conclure vis-à-vis du cahier des charges.}
+
+\end{document}
+
+
+

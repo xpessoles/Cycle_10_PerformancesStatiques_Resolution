@@ -1,0 +1,465 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\newboolean{td}
+\setboolean{td}{true}
+
+
+\usepackage[%
+    pdftitle={CI 06 : Stat - Ch 02 : PFS},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 6 : Étude du comportement statique des systèmes}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 2 -- Principe Fondamental de la Statique}{
+Partie  -- }}
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Xavier \textsc{Pessoles} \\ 2013 -- 2014}{
+}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 6 : Statique\\
+Chapitre 2 : PFS -- TD 2}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Travaux Dirigés}}
+\end{center}
+
+\begin{flushright}
+\textit{Ressources de Florestan Mathurin et Stéphane Genouël.}
+\end{flushright}
+
+
+
+\section*{Frein de sécurité d'une grue portuaire}
+
+\begin{minipage}[c]{.6\linewidth}
+Les grues portuaires permettent de transporter des marchandises pour les débarquer des bateaux sur les quais ou pour charger les marchandises dans les bateaux. Ces systèmes sont toujours équipés d'un frein de sécurité qui permet de freiner la chute des objets à porter au cas où un dysfonctionnement apparaîtrait.
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.35\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/grue}
+\end{center}
+\end{minipage}
+
+
+\begin{obj}
+  L'objectif est de vérifier si le frein de sécurité satisfait l'exigence suivante : lors d'une phase de chute, le frein doit permettre d'arrêter la chute d'un objet ayant un poids de 60 000 N. (Exigence req).
+  
+\end{obj}
+  
+Le schéma cinématique du frein est fourni sur la figure de la page suivante. L'objet à porter repéré 8 sur le schéma est soumis à la gravité. On néglige la masse de toutes les autres pièces. La pige 9 relie les pièces 2, 3 et 4 au point $B$, toutes en liaison pivot par rapport à la pige 9. 
+
+Toutes les liaisons sont parfaites sauf le contact entre 5 et 7 et entre 6 et 7, respectivement aux points $G$ et $H$ qui se font avec frottement. Le coefficient de frottement est de 0,15. On se placera à la limite du glissement qui correspond au cas extrême.
+
+On pourra faire l'hypothèse que le problème est plan.
+
+\subparagraph{}
+\textit{Déterminer si, pour serrer le frein, la haute pression dans le vérin doit se situer dans la cavité supérieure ou inférieure.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Pour serrer le frein, la haute pression doit être dans la chambre supérieure. 
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{La pression dans le vérin est de 200 bars. La section du vérin est de $30\; cm^3$. Déterminer l'effort que le vérin exerce sur 9 pour serrer le frein.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+L'effort dans le vérin est $F_v = P \cdot S = 200 \cdot 10^5 \cdot 30 \cdot 10^{-2} = 60\, 000 \; N.$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Tracer le graphe d'analyse associé au système.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Après avoir isolé l'ensemble \{1+2\}, appliquer le PFS et déterminer $\vectf{9}{2}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole \{1+2\}.
+
+On réalise le bilan des actions mécaniques extérieures : 
+\begin{itemize}
+\item actions de la liaison pivot de 0 sur 1 de centre $A$ et d'axe $\vect{z}$ : $\torseurstat{T}{0}{1}$;
+\item actions de la liaison pivot de 9 sur 2 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{9}{2}$.
+\end{itemize}
+
+On applique le PFS à l'ensemble \{1+2\} au point $B$ :
+$$
+\torseurstat{T}{0}{1} + \torseurstat{T}{9}{2} = \{0\} 
+$$
+
+$$
+\left\{
+\begin{array}{l}
+X_{92} + X_{01} = 0 \\
+Y_{92} + Y_{01} = 0 \\
+ L X_{01} = 0 \\
+\end{array}
+\right.
+\Longleftrightarrow 
+\left\{
+\begin{array}{l}
+X_{92} = 0 \\
+Y_{92} + Y_{01} = 0 \\
+ X_{01} = 0 \\
+\end{array}
+\right.
+$$
+
+Au final, $\vectf{9}{2} = - 60\, 000 \vect{y}$.
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Après avoir isolé le solides 3 \textbf{puis} le solide 4, appliquer le PFS et déterminer les inconnues de liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole \{3\}.
+
+On réalise le bilan des actions mécaniques extérieures : 
+\begin{itemize}
+\item actions de la liaison pivot de 6 sur 3 de centre $C$ et d'axe $\vect{z}$ : $\torseurstat{T}{6}{3}$;
+\item actions de la liaison pivot de 9 sur 3 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{9}{3}$.
+\end{itemize}
+
+On applique le PFS à l'ensemble \{3\} au point $B$ :
+$$
+\torseurstat{T}{6}{3} + \torseurstat{T}{9}{3} = \{0\} 
+$$
+$$
+\left\{
+\begin{array}{l}
+X_{93} + X_{63} = 0 \\
+Y_{93} + Y_{63} = 0 \\
+ X_{63}L_{3y} - Y_{63}L_{3x} = 0 \\
+\end{array}
+\right.
+\Longleftrightarrow 
+\left\{
+\begin{array}{l}
+ X_{63} = -X_{93}  \\
+ Y_{63} = - Y_{93}  \\
+ -X_{93}L_{3y} + Y_{93}L_{3x} = 0 \\
+\end{array}
+\right.
+\Longleftrightarrow 
+\left\{
+\begin{array}{l}
+ X_{63} = - X_{93}  \\
+ Y_{63} = - Y_{93}  \\
+ X_{93} =  Y_{93}\dfrac{L_{3x}}{L_{3y}}  \\
+\end{array}
+\right.
+$$
+
+
+On isole \{4\}.
+
+On réalise le bilan des actions mécaniques extérieures : 
+\begin{itemize}
+\item actions de la liaison pivot de 5 sur 4 de centre $D$ et d'axe $\vect{z}$ : $\torseurstat{T}{5}{4}$;
+\item actions de la liaison pivot de 9 sur 4 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{9}{5}$.
+\end{itemize}
+
+On applique le PFS à l'ensemble \{4\} au point $B$ :
+$$
+\torseurstat{T}{5}{4} + \torseurstat{T}{9}{4} = \{0\} 
+$$
+$$
+\left\{
+\begin{array}{l}
+X_{94} + X_{54} = 0 \\
+Y_{94} + Y_{54} = 0 \\
+ X_{54}L_{4y} - Y_{54}L_{4x} = 0 \\
+\end{array}
+\right.
+\Longleftrightarrow 
+\left\{
+\begin{array}{l}
+ X_{54} = -X_{94}  \\
+ Y_{54} = - Y_{94}  \\
+ -X_{94}L_{4y} + Y_{94}L_{4x} = 0 \\
+\end{array}
+\right.
+\Longleftrightarrow 
+\left\{
+\begin{array}{l}
+ X_{54} = - X_{94}  \\
+ Y_{54} = - Y_{94}  \\
+ X_{94} =  Y_{94}\dfrac{L_{4x}}{L_{4y}}  \\
+\end{array}
+\right.
+$$
+
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Après avoir isolé le solide 9, appliquer le PFS et déterminer les inconnues de liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole \{9\}.
+
+On réalise le bilan des actions mécaniques extérieures : 
+\begin{itemize}
+\item actions de la liaison pivot de 2 sur 9 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{2}{9}$;
+\item actions de la liaison pivot de 3 sur 9 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{3}{9}$;
+\item actions de la liaison pivot de 4 sur 9 de centre $B$ et d'axe $\vect{z}$ : $\torseurstat{T}{4}{9}$.
+\end{itemize}
+
+On applique le PFS à l'ensemble \{3\} au point $B$ :
+$$
+\torseurstat{T}{2}{9} + \torseurstat{T}{3}{9} + \torseurstat{T}{4}{9} = \{0\} 
+$$
+$$
+\left\{
+\begin{array}{l}
+X_{29} + X_{39} + X_{49} = 0 \\
+Y_{29} + Y_{39} + Y_{49} = 0
+\end{array}
+\right.
+$$
+
+
+En utilisant les systèmes d'équations précédents, on obtient :
+$$
+\left\{
+\begin{array}{l}
+0 -  Y_{93}\dfrac{L_{3x}}{L_{3y}}  -  Y_{94}\dfrac{L_{4x}}{L_{4y}} = 0 \\
+Y_{29} + Y_{39} + Y_{49} = 0
+\end{array}
+\right.
+\Longleftrightarrow
+\left\{
+\begin{array}{l}
+ Y_{93}\dfrac{L_{3x}}{L_{3y}} = -  Y_{94}\dfrac{L_{4x}}{L_{4y}}  \\
+Y_{94} = Y_{29} + Y_{39} 
+\end{array}
+\right.
+\Longleftrightarrow
+\left\{
+\begin{array}{l}
+ Y_{93} = -  Y_{94}\dfrac{L_{4x}}{L_{4y}}\dfrac{L_{3y}}{L_{3x}}  \\
+Y_{94} = Y_{29} + Y_{39} 
+\end{array}
+\right.
+$$
+
+$$
+\left\{
+\begin{array}{l}
+ Y_{93} = -  \left( Y_{29} + Y_{39}\right)\dfrac{L_{4x}}{L_{4y}}\dfrac{L_{3y}}{L_{3x}}  \\
+Y_{94} = Y_{29} + Y_{39} 
+\end{array}
+\right.
+\Longleftrightarrow
+\left\{
+\begin{array}{l}
+ Y_{93} \left( 1-\dfrac{L_{4x}}{L_{4y}}\dfrac{L_{3y}}{L_{3x}}\right)= -   Y_{29} \dfrac{L_{4x}}{L_{4y}}\dfrac{L_{3y}}{L_{3x}}  \\
+Y_{94} = Y_{29} + Y_{39} 
+\end{array}
+\right.
+\Longleftrightarrow
+\left\{
+\begin{array}{l}
+ Y_{93} = -   Y_{29} \dfrac{L_{4x} L_{3y}}{ L_{4y} L_{3x}- L_{4x} L_{3y}}  \\
+Y_{94} = Y_{29} + Y_{39} 
+\end{array}
+\right.
+$$
+
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Après avoir isolé le solide 5, appliquer le PFS et déterminer les inconnues de liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On isole \{5\}.
+
+On réalise le bilan des actions mécaniques extérieures : 
+\begin{itemize}
+\item actions de la liaison pivot de 4 sur 5 de centre $D$ et d'axe $\vect{z}$ : $\torseurstat{T}{4}{5}$;
+\item actions de la liaison pivot de 0 sur 5 de centre $E$ et d'axe $\vect{z}$ : $\torseurstat{T}{0}{5}$;
+\item contact ponctuel avec frottement de 7 sur 5 de centre $G$ et de normale $\vect{x}$ : $\torseurstat{T}{7}{5}$.
+\end{itemize}
+
+On applique le PFS à l'ensemble \{5\} au point $G$ :
+$$
+\torseurstat{T}{4}{5} + \torseurstat{T}{0}{5} + \torseurstat{T}{7}{5} = \{0\} 
+$$
+$$
+\left\{
+\begin{array}{l}
+X_{45} + X_{05} + X_{74} = 0 \\
+Y_{45} + Y_{05} + Y_{74} = 0 \\
+X_{05}\dfrac{L_{5y}}{2}-X_{45}\dfrac{L_{5y}}{2} - Y_{45}L_{5x}- Y_{05}L_{5x} = 0
+\end{array}
+\right.
+$$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Après avoir isolé le solide 6, appliquer le PFS et déterminer les inconnues de liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{On donne $||\vect{KG}||=||\vect{KH}||=12\;cm$. Déterminer le couple de freinage qui s'exerce sur les pièces 5, 6 et 7. }
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{On donne $||\vect{KJ}||=8\;cm$. Calculer le poids maximal de l'objet que le frein de sécurité peut freiner. Conclure quant à la capacité du frein de sécurité à satisfaire le niveau du critère de l'exigence req 1.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+
+\begin{center}
+\includegraphics[width=.55\textwidth]{images/grue2}
+\end{center}
+
+\newpage
+
+\section*{Passerelle télescopique d'aéroport}
+\setcounter{subparagraph}{0}
+\begin{center}
+\includegraphics[height=4cm]{images/pas1} \hspace{.5cm}
+\includegraphics[height=4cm]{images/pas2}
+\end{center}
+
+Dans les aéroports modernes, des passerelles télescopiques, comme celle modélisée ci-dessous, relient les avions aux halls d’accès. Les passagers pénètrent ainsi dans les avions à l’abri des intempéries.
+L’appareil comporte :
+\begin{itemize}
+\item deux couloirs 1 et 2,
+\item une roue motrice 3,
+\item un cadre 4.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/pas3}
+\end{center}
+
+Le poids des solides 3 et 4 est négligeable devant le poids des couloirs 1 et 2 :
+\begin{itemize}
+\item Le couloir 1 a pour centre de gravité $G_1$ tel que $\vect{OG_1} = d \vect{y}$.
+\item Le couloir 2 a pour centre de gravité $G_2$ tel que $\vect{CG_2} = e \vect{x}$.
+\end{itemize}
+
+\begin{itemize}
+\item L’extrémité raccordée aux bâtiments (par des soufflets) est soutenue par le solide 4.
+\item Pour pouvoir atteindre la porte de l’avion, l’autre extrémité peut se déplacer dans toutes les
+directions grâce à une roue motrice orientable 3.
+\item Un système, non représenté et non étudié, permet une translation du point $C$ suivant la direction
+$\vect{z}$ afin d’adapter le système aux différentes hauteurs des avions. Durant tout le problème, nous
+considérerons le couloir horizontal, et $\vect{DC}= h\vect{z}$.
+\end{itemize}
+
+\textbf{Remarque : } toutes les liaisons sont considérées parfaites.
+
+Afin de dimensionner les liaisons en $A$, $B$, $C$, $D$, $E$ et $M$, il est nécessaire de connaître les actions
+mécaniques transmissibles par ces dernières.
+
+\subparagraph{}
+\textit{Réaliser le graphe de structure, puis compléter-le en vue d’une étude de statique.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Par quel(s) isolement(s) peut-on commencer ?}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Parmi ces isolements, lequel donnera moins de calcul ?}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Donner la suite d’isolement à effectuer pour pouvoir déterminer complètement toutes
+les actions transmissibles dans les liaisons.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Résoudre vos différents isolements.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Faire l’application numérique.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+
+On donne :
+\begin{itemize}
+\item $OC = y_0 = 16\; m$
+\item $OG_1 = y_0 = 6\; m$
+\item $OA=OB=a = 1,5\; m$
+\item $CG_2 = e = 1\; m$
+\item $CD=OE = h = 3\; m$
+\item $OM = l = 7\; m$
+\item $m_1=10^4 \; kg$
+\item $m_2=15 \cdot 10^3 \; kg$
+\end{itemize}
+
+\newpage
+
+\begin{thebibliography}{2}
+\bibitem{grue}{\url{http://www.fond-ecran-image.com/galerie-membre,geometrique,grue-portuaire-076jpg.php}}
+\end{thebibliography}
+
+
+
+\end{document}
